@@ -180,8 +180,10 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                          solarized
-                          organic-green
+                         default
+                         doom-tomorrow-day
+                         organic-green
+                          ;; solarized
                           pastelmac
                           flatui
                           soft-stone
@@ -189,16 +191,15 @@ values."
                           ample-light
                           solarized-light
                           adwaita
-                          doom-tomorrow-day
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '(;; "Inziu Iosevka SC"
-                               ;;"Source Code Pro"
-                                "Menlo"
-                               :size 16
+                               "Source Code Pro"
+                                ;; "Menlo"
+                               :size 15
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -457,7 +458,11 @@ values."
 (advice-add 'counsel-yank-pop :before #'moon-override-yank-pop)
 
   ;; (add-hook 'text-mode-hook 'spacemacs/toggle-spelling-checking-on)
-  )
+  (set-background-color "#f0fff0")
+;; (setq my-font (font-spec :family "Menlo" :size 15.0))
+;; load fonts
+;; (set-frame-font my-font nil nil)
+)
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
 (load custom-file 'no-error 'no-message)
