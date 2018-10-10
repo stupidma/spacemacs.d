@@ -180,12 +180,12 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         default
                          doom-tomorrow-day
+                         flatui
                          organic-green
+                         default
                           ;; solarized
                           pastelmac
-                          flatui
                           soft-stone
                           autumn-light
                           ample-light
@@ -199,7 +199,7 @@ values."
    dotspacemacs-default-font '(;; "Inziu Iosevka SC"
                                "Source Code Pro"
                                 ;; "Menlo"
-                               :size 15
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -321,7 +321,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers 'relative
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'origami
@@ -458,7 +458,7 @@ values."
 (advice-add 'counsel-yank-pop :before #'moon-override-yank-pop)
 
   ;; (add-hook 'text-mode-hook 'spacemacs/toggle-spelling-checking-on)
-  (set-background-color "#f0fff0")
+   (set-background-color "#f0fff0")
 ;; (setq my-font (font-spec :family "Menlo" :size 15.0))
 ;; load fonts
 ;; (set-frame-font my-font nil nil)
