@@ -58,7 +58,7 @@ values."
      (osx :variables osx-dictionary-dictionary-choice "Simplified Chinese - English"
           osx-command-as 'super)
      restclient
-     (gtags :disabled-for clojure emacs-lisp javascript latex python shell-scripts)
+     (gtags :disabled-for clojure emacs-lisp latex python shell-scripts)
      (shell :variables shell-default-shell 'eshell)
      ;; docker
      latex
@@ -88,6 +88,10 @@ values."
               :variables chinese-enable-fcitx nil
               chinese-enable-youdao-dict t)
      themes-megapack
+     (go :variables go-tab-width 4)
+	 auto-complete
+     protobuf
+     imenu-list
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -109,7 +113,7 @@ values."
                     org-bullets smooth-scrolling org-repo-todo org-download org-timer
                     livid-mode git-gutter git-gutter-fringe  evil-escape
                     leuven-theme gh-md evil-lisp-state spray lorem-ipsum symon
-                    ac-ispell ace-jump-mode auto-complete auto-dictionary
+                    ac-ispell ace-jump-mode auto-dictionary
                     clang-format define-word google-translate disaster epic
                     fancy-battery org-present orgit orglue
                     helm-flyspell flyspell-correct-helm clean-aindent-mode
@@ -376,6 +380,9 @@ values."
   )
 
 (defun dotspacemacs/user-config ()
+  (require 'go-autocomplete)
+  (require 'auto-complete-config)
+  (ac-config-default)
   ;;解决org表格里面中英文对齐的问题
   (when (configuration-layer/layer-usedp 'chinese)
     (when (and (spacemacs/system-is-mac) window-system)
@@ -458,10 +465,11 @@ values."
 (advice-add 'counsel-yank-pop :before #'moon-override-yank-pop)
 
   ;; (add-hook 'text-mode-hook 'spacemacs/toggle-spelling-checking-on)
-   (set-background-color "#f0fff0")
+ (set-background-color "#f0fff0")
 ;; (setq my-font (font-spec :family "Menlo" :size 15.0))
 ;; load fonts
 ;; (set-frame-font my-font nil nil)
+  (setq gofmt-command "goimports")
 )
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
